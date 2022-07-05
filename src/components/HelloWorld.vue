@@ -2,6 +2,8 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Net-Ninja Projesi</h2>
+    <p>İlk kursta Vue ile ilgili başta gerekli olan bilgileri verdi.</p>
+    <p>Bir html sayfası sunucuya nasıl gider vs.</p>
   </div>
 </template>
 
