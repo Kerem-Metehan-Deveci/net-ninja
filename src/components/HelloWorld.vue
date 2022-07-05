@@ -1,9 +1,23 @@
 <template>
   <div class="hello">
+
     <h1>{{ msg }}</h1>
-    <h2>Net-Ninja Projesi</h2>
-    <p>İlk kursta Vue ile ilgili başta gerekli olan bilgileri verdi.</p>
-    <p>Bir html sayfası sunucuya nasıl gider vs.</p>
+
+    <h2>Net-Ninja Project</h2>
+
+  </div>
+  <div id="app">
+
+    <div v-if="showBooks">
+    <p>{{title}} - {{author}} - {{age}}</p>
+
+    </div>
+    <button @click="toggleShowBooks">
+    <span v-if="showBooks">Gizle</span>
+    <span v-else>Göster</span>
+
+    </button>
+    <div v-show="showBooks">Şuan Gösteriliyor</div>
   </div>
 </template>
 
@@ -13,23 +27,20 @@ export default {
   props: {
     msg: String,
   },
-};
-</script>
+  data() {
+    return {
+      showBooks: true,
+      title: 'Never Say Never',
+      author: 'Tom Cruise',
+      age: 25,
+    };
+  },
+  methods: {
+    toggleShowBooks() {
+      this.showBooks = !this.showBooks;
+    },
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+  },
+};
+
+</script>
