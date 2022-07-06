@@ -1,16 +1,44 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app">
+    <h1>Kerem'in Listesi </h1>
+
+    <v-input
+      v-model="searchText"
+      name="search"
+      placeholder="Arama Yapin..."
+    />
+
+    <v-list :items="filteredItems"/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import VTest from "@/components/VTest.vue";
+import VInput from "@/components/VInput.vue";
+import VList from "@/components/VList.vue";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    VInput,
+    VList,
   },
+  data() {
+    return {
+      searchText: '',
+      list: [
+        "Muz",
+        "Elma",
+        "Armut",
+        "Karpuz"
+      ]
+    };
+  },
+  computed: {
+    filteredItems() {
+      return this.list.filter((item) => item.includes(this.searchText));
+    }
+  }
 };
 </script>
 
@@ -22,5 +50,25 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+app h1 {
+  margin-bottom: 12px;
+}
+
+.list {
+  list-style-type: none;
+}
+
+.list li {
+  padding: 8px;
+  font-weight: bold;
 }
 </style>
